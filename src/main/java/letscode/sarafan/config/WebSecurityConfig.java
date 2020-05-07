@@ -15,20 +15,23 @@ import java.time.LocalDateTime;
 @Configuration
 @EnableWebSecurity
 @EnableOAuth2Sso
-public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+                .antMatcher("/**")
                 .authorizeRequests()
                 .mvcMatchers("/").permitAll()
+                .antMatchers("/", "/login**", "/js/**", "/error**").permitAll()
                 .anyRequest().authenticated()
+                .and().logout().logoutSuccessUrl("/").permitAll()
                 .and()
                 .csrf().disable();
 
     }
 
     @Bean
-    public PrincipalExtractor principalExtractor(UserDetailsRepo userDetailsRepo){
+    public PrincipalExtractor principalExtractor(UserDetailsRepo userDetailsRepo) {
         return map -> {
             String id = (String) map.get("sub");
             User user = userDetailsRepo.findById(id).orElseGet(() -> {

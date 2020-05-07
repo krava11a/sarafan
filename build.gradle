@@ -32,6 +32,8 @@ dependencies {
     compile('org.postgresql:postgresql')
     compile('org.projectlombok:lombok')
     compile('javax.xml.bind:jaxb-api')
+    compile('org.springframework.session:spring-session-jdbc')
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 //    compile('com.sun.xml.bind:jaxb-core')
 //    compile('com.sun.xml.bind:jaxb-impl')
 }
