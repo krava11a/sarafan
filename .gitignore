@@ -4,6 +4,14 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/ 
+/.nb-gradle/
+
+node_modules
+
 
 ### STS ###
 .apt_generated
